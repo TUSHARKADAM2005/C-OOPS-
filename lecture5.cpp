@@ -311,21 +311,65 @@ We are asked that whether the two strings are equal or not , Thus If two strings
 
 */
 
+// #include<iostream>
+// #include<cstring>
+// using namespace std;
+
+// int main(){
+
+//     char str[100]="abcd";
+//     int len = strlen(str);
+
+//     for(int i=0; i<=len ; i++){    // for(int i=0; str[i]!='\0'; i++)  we can use this also instead calculating the length of string .
+//         for(int j=0; j<i; j++){
+//             cout<<str[j];
+//         }
+//         cout<<endl;
+//     }
+//     return 0;
+// }
+
+//_______________________________________________________________________________________________________________________________________________________________________
+
 #include<iostream>
 #include<cstring>
 using namespace std;
+void revstr(char arr[]);
 
 int main(){
 
-    char str[100]="abcd";
-    int len = strlen(str);
+    char str1[100];
+    cout<<"Enter string : "; 
+    cin.getline(str1,100);
+    
+    char str2[100];
+    strcpy(str2,str1);
+    revstr(str1);
 
-    for(int i=0; i<=len ; i++){    // for(int i=0; str[i]!='\0'; i++)  we can use this also instead calculating the length of string .
-        for(int j=0; j<i; j++){
-            cout<<str[j];
-        }
-        cout<<endl;
+    if(strcmp(str2,str1)==0){
+        cout <<"Palindrome  ";
     }
+    else
+        cout<<"Not Palindrome ";
+
     return 0;
 }
+
+void revstr(char arr[]){
+    int first =0;
+    int last = strlen(arr)-1;  // -1 is done to exclude the null character during swapping
+
+    while(first<last){
+        arr[first]=arr[first]+arr[last];
+        arr[last]=arr[first]-arr[last];
+        arr[first]=arr[first]-arr[last];
+
+        first++;
+        last--;
+    }
+    return;
+}
+
+
+
 
